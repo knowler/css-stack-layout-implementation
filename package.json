@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "build": "postcss src/main.css -o dist/main.css",
-    "watch": "postcss src/main.css -o dist/main.css -w"
+    "build": "postcss src/main.css -o public/main.css",
+    "watch": "postcss src/main.css -o public/main.css -w"
   },
   "devDependencies": {
     "postcss": "^7.0.24",
