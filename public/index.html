@@ -35,9 +35,10 @@
     <script>
       /** written for compatibility */
       var selector = document.createElement('select');
-      var label = document.createElement('label');
-
       selector.id = 'implementation';
+
+      var label = document.createElement('label');
+      label.setAttribute('for', 'implementation');
       label.textContent = 'Choose implementation';
 
       var options = [
