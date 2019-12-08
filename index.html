@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="dist/main.css">
   </head>
   <body class="shiny">
+    <div class="selector">
+      <noscript>
+        <p>
+          Change the body CSS class name between the following to see the different implementations:
+          <ul>
+            <li>shiny: Grid + Custom Properties</li>
+            <li>spiffy: Flexbox + Gap + Custom Properties</li>
+            <li>trusty: Flexbox + Custom Properties</li>
+            <li>legacy: Clearfix/Floats</li>
+          </ul>
+        </p>
+      </noscript>
+    </div>
     <header class="stack stack--space2" style="--space: 1rem">
       <h1>CSS Stack Implementations</h1>
       <p>A stack component is an element whose children have a consistent negative space between
@@ -19,5 +32,47 @@
         </ul>
       </div>
     </header>
+    <script>
+      /** written for compatibility */
+      var selector = document.createElement('select');
+      var label = document.createElement('label');
+
+      selector.id = 'implementation';
+      label.textContent = 'Choose implementation';
+
+      var options = [
+        {
+          value: 'shiny',
+          label: 'Shiny (Grid + Custom Properties)',
+        },
+        {
+          value: 'spiffy',
+          label: 'Spiffy (Flexbox + Gap + Custom Properties)',
+        },
+        {
+          value: 'trusty',
+          label: 'Trusty (Flexbox + Custom Properties)',
+        },
+        {
+          value: 'legacy',
+          label: 'Legacy (Clearfix/Floats)',
+        },
+      ];
+
+      for (var i = 0; i < options.length; i++) {
+        var option = document.createElement('option');
+        option.value = options[i].value;
+        option.textContent = options[i].label;
+
+        selector.appendChild(option);
+      }
+
+      selector.addEventListener('change', function(event) {
+        document.body.className = event.target.value;
+      });
+
+      document.querySelector('.selector').appendChild(label);
+      document.querySelector('.selector').appendChild(selector);
+    </script>
   </body>
 </html>
