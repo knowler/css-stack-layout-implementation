@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS Stack Implementations</title>
+    <link rel="stylesheet" href="dist/main.css">
+  </head>
+  <body class="shiny">
+    <header class="stack stack--space2" style="--space: 1rem">
+      <h1>CSS Stack Implementations</h1>
+      <p>A stack component is an element whose children have a consistent negative space between
+        them. Stacks can be vertical (default) or horizontal. This example does not explore how
+        stacks might overflow.</p>
+      <div> <!-- Intermediary wrapper only for trusty otherwise setting the variable here overrides the space for the unordered list as a child -->
+        <ul class="list-none stack stack--h stack--space1" style="--space: 0.5rem">
+          <li>Hello</li>
+          <li>Hello</li>
+        </ul>
+      </div>
+    </header>
+  </body>
+</html>

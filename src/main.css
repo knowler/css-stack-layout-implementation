@@ -1,0 +1,142 @@
+:root {
+  --measure: 64ch;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+p {
+  max-width: var(--measure);
+  line-height: 1.5;
+}
+
+.list-none {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+/**
+ * Common stack behaviour
+ */
+.stack > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/**
+ * Legacy
+ *
+ * Stack without custom properties or flexbox/grid. Uses clearfix/float for horizontal.
+ */
+.legacy {
+  & .stack.stack--h {
+    *zoom: 1;
+  }
+
+  & .stack.stack--h::before,
+  .stack.stack--h::after {
+    display: table;
+    content: '';
+  }
+
+  & .stack.stack--h::after {
+    clear: both;
+  }
+
+  & .stack.stack--h > * {
+    float: left;
+  }
+
+  & .stack.stack--space1 > * + * {
+    margin-top: 0.5rem;
+  }
+
+  & .stack.stack--h.stack--space1 > * + * {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+
+  & .stack.stack--space2 > * + * {
+    margin-top: 1rem;
+  }
+
+  & .stack.stack--h.stack--space2 > * + * {
+    margin-top: 0;
+    margin-left: 1rem;
+  }
+}
+
+/**
+ * Trusty
+ *
+ * Flexbox based stack
+ */
+.trusty {
+  & .stack {
+    --space: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  & .stack.stack--h {
+    flex-direction: row;
+  }
+
+  & .stack:not(.stack--h) > * + * {
+    margin-top: var(--space);
+  }
+
+  & .stack.stack--h > * + * {
+    margin-left: var(--space);
+  }
+}
+
+/**
+ * Spiffy
+ *
+ * Builds on the previous flexbox based stack, but instead uses the Firefox only gap property.
+ */
+.spiffy {
+  & .stack {
+    --space: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space);
+  }
+
+  & .stack.stack--h {
+    flex-direction: row;
+  }
+}
+
+/**
+ * Shiny
+ *
+ * Grid based stack
+ */
+.shiny {
+  & .stack {
+    --space: 0;
+    display: grid;
+    grid-gap: var(--space);
+  }
+
+  & .stack.stack--h {
+    grid-auto-flow: column;
+    grid-auto-columns: fit-content(100%);
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "postcss src/main.css -o dist/main.css",
+    "watch": "postcss src/main.css -o dist/main.css -w"
+  },
+  "devDependencies": {
+    "postcss": "^7.0.24",
+    "postcss-cli": "^6.1.3",
+    "postcss-preset-env": "^6.7.0"
+  }
+}
